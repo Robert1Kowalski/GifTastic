@@ -6,7 +6,9 @@ var numOfGIfs = 10;
 var rating = "PG";
 
 function makeButtons() {
+    $("#button-container").empty();
     for (var i = 0; i < sports.length; i++) {
+
         var newButton = $("<button>");
         // console.log(newButton)
         newButton.addClass("btn");
@@ -30,7 +32,7 @@ $("#button-container").on("click", ".sports-button", function (event) {
             var newDiv = $("<div>");
             for (var i in response.data) {
                 var responseElement = response.data[i]
-                console.log(responseElement)
+                // console.log(responseElement)
                 var newDiv = $("<div class = 'ratingsHolder'>")
                 newDiv.append("<p>Rating: " + responseElement.rating + "</p>")
 
@@ -77,24 +79,22 @@ $("#button-container").on("click", ".sports-button", function (event) {
 
 
 
-	newSport = " "
+	
 
-       function searchButton() {
-        if (newSport = ($.stringify("#sport-id").val().trim())){
-            (($("#submit").on("click", function(event){
-            var newButton2 = $("<button>");
-       
-           
-            
-            newButton2.text(newSport);
-            $("#button-container").append(newButton2);
+    
+        var newSport = ""
         
-
-        })))}
-        else {
-            console.log("nothing")
-        }
-    }
+            $("#submit").on("click", function(event){
+                event.preventDefault();
+                // console.log("hitme")
+            var newButton2 = $("<button>");
+          newSport = (($("#sport-id").val().trim()))
+            sports.push(newSport)
+            makeButtons();
+        
+        })
+       
+    
     ///PseudoCode:  Trying to build a function to cover the search button 
     //  I tried to build an if statement that says if var newSport === the returned text value, create an on-click event that appends the new button to the button group. 
 
